@@ -1873,19 +1873,19 @@ Client.write_note_to_buffer = function(self, note, opts)
   local insert_template = require("obsidian.templates").insert_template
   opts = opts or {}
 
-  if opts.template and util.buffer_is_empty(opts.bufnr) then
-    note = insert_template {
-      template_name = opts.template,
-      client = self,
-      location = util.get_active_window_cursor_location(),
-    }
-  end
+  -- if opts.template and util.buffer_is_empty(opts.bufnr) then
+  --   note = insert_template {
+  --     template_name = opts.template,
+  --     client = self,
+  --     location = util.get_active_window_cursor_location(),
+  --   }
+  -- end
 
   local frontmatter = nil
   local should_save_frontmatter = self:should_save_frontmatter(note)
-  if should_save_frontmatter and self.opts.note_frontmatter_func ~= nil then
-    frontmatter = self.opts.note_frontmatter_func(note)
-  end
+  -- if should_save_frontmatter and self.opts.note_frontmatter_func ~= nil then
+  --   frontmatter = self.opts.note_frontmatter_func(note)
+  -- end
 
   return note:save_to_buffer {
     bufnr = opts.bufnr,
